@@ -1,6 +1,6 @@
 FROM node
 
-WORKDIR /app/hisabichopdo
+WORKDIR /app/sarvusahityanodejs27aug
 
 COPY package.json .
 

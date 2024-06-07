@@ -63,6 +63,13 @@ const Head = () => {
         sizes="32x32"
         href="images/favicon-32x32.png"
       />
+
+      <link
+        rel="icon"
+        href="images/favicon.ico"
+        type="image/x-icon"
+        sizes="32x32"
+      />
       <link
         rel="icon"
         type="image/png"

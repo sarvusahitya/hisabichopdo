@@ -55,12 +55,13 @@ export default function DukanLandingPage() {
       <h1 className="mb-3 text-2xl font-semibold text-white">
         દુકાન આવક ઉમેરો
       </h1>
-      <div className="flex flex-col lg:max-w-5xl lg:w-full lg:mb-0 lg:flex-row lg:justify-between">
+      <div className="flex flex-col lg:max-w-5xl lg:w-full lg:mb-3 lg:flex-row lg:justify-between">
         <DatePicker
           selected={selectedDate}
           onChange={handleDateChange}
           dateFormat="dd - MMM - yyyy"
           showMonthYearDropdown
+          className="mb-2 w-full md:w-auto"
         />
         <input
           type="text"
@@ -70,13 +71,12 @@ export default function DukanLandingPage() {
           }}
           pattern="[0-9]*"
           title="Please enter only numeric values"
-          className="form-control text-black "
+          className="form-control text-black w-full mb-2 md:mb-0"
           placeholder="આવક અહીંયા લખો."
         />
-
         <button
           onClick={handleClick}
-          className="px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 focus:outline-none"
+          className="px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 focus:outline-none w-full"
         >
           Add
         </button>

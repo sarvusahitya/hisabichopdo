@@ -85,6 +85,9 @@ export default function DukanLandingPage() {
     console.log(date);
     setSelectedDate(date);
   };
+  const totalAmount = transactions.reduce((total, transaction) => {
+    return total + transaction.amount;
+  }, 0);
 
   return (
     <main className="flex flex-col items-center justify-between p-24">
@@ -140,11 +143,18 @@ export default function DukanLandingPage() {
                   <td className="py-2 px-4 border-b border-gray-200 whitespace-nowrap">
                     {new Date(transaction.date).toLocaleDateString()}
                   </td>
-                  <td className="py-2 px-4 border-b border-gray-200 whitespace-nowrap">
+                  <td className="py-2 px-4 border-b border-gray-200 whitespace-nowrap text-right">
                     {formatCurrency(transaction.amount)}
                   </td>
                 </tr>
               ))}
+
+              <td
+                className="py-2 px-4 border-b border-gray-200 whitespace-nowrap text-right"
+                colSpan={2}
+              >
+                {formatCurrency(totalAmount)}
+              </td>
             </tbody>
           </table>
         )}

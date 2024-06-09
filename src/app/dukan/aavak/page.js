@@ -1,20 +1,46 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 export default function DukanLandingPage() {
   const [inputValue, setInputValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [transactions, setTransactions] = useState([]);
+  const [fetchLoading, setFetchLoading] = useState(true);
+  const formatCurrency = (amount) => {
+    return new Intl.NumberFormat("en-IN", {
+      style: "currency",
+      currency: "INR",
+    }).format(amount);
+  };
+
+  useEffect(() => {
+    async function fetchTransactions() {
+      try {
+        const response = await fetch("/api/listdukantransactions");
+        if (!response.ok) {
+          throw new Error("Failed to fetch transactions");
+        }
+        const data = await response.json();
+        setTransactions(data);
+      } catch (error) {
+        console.error("Error fetching transactions:", error);
+      } finally {
+        setFetchLoading(false);
+      }
+    }
+
+    fetchTransactions();
+  }, []);
 
   const handleClick = async () => {
     console.log("Clicked! Input value:", inputValue);
-    setIsLoading(true); // Set isLoading to true when button is clicked
+    setIsLoading(true);
 
     try {
-      // Extracting only the date part
       const selectedDateString = selectedDate.toLocaleDateString("en-US");
-
       const parts = selectedDateString.split("/");
       const formattedDateString = `${parts[2]}-${parts[0].padStart(
         2,
@@ -27,7 +53,7 @@ export default function DukanLandingPage() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          date: formattedDateString, // Passing only the date without the time
+          date: formattedDateString,
           amount: parseFloat(inputValue),
         }),
       });
@@ -43,13 +69,17 @@ export default function DukanLandingPage() {
       console.log("Success:", data);
       alert("આવક ઉમેરાય ગઈ છે");
       setInputValue("");
+
+      // Refresh transactions list after adding a new entry
+      const refreshedResponse = await fetch("/api/listdukantransactions");
+      const refreshedData = await refreshedResponse.json();
+      setTransactions(refreshedData);
     } catch (error) {
       console.error("Error:", error);
     } finally {
-      setIsLoading(false); // Set loading to false when the API call is finished
+      setIsLoading(false);
     }
   };
-  const [selectedDate, setSelectedDate] = useState(new Date());
 
   const handleDateChange = (date) => {
     console.log(date);
@@ -80,16 +110,44 @@ export default function DukanLandingPage() {
           className="form-control text-black w-full mb-2 md:mb-0"
           placeholder="આવક અહીંયા લખો."
         />
-
         <button
           onClick={handleClick}
           className="px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 focus:outline-none w-full"
         >
-          {isLoading ? "Loading..." : "Add"}
+          {isLoading ? "Loading..." : "ઉમેરો"}
         </button>
       </div>
-      <div className="grid grid-cols-3 gap-4 lg:max-w-5xl lg:w-full lg:mb-0 lg:text-left">
-        {/* Your grid content goes here */}
+
+      <h1 className="mb-3 text-2xl font-semibold text-white">દુકાન આવક યાદી</h1>
+      <div className="text-black">
+        {fetchLoading ? (
+          <div>Loading...</div>
+        ) : (
+          <table className="min-w-full bg-white border border-gray-200">
+            <thead>
+              <tr>
+                <th className="py-2 px-4 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                  Date
+                </th>
+                <th className="py-2 px-4 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                  Transaction
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {transactions.map((transaction) => (
+                <tr key={transaction._id}>
+                  <td className="py-2 px-4 border-b border-gray-200 whitespace-nowrap">
+                    {new Date(transaction.date).toLocaleDateString()}
+                  </td>
+                  <td className="py-2 px-4 border-b border-gray-200 whitespace-nowrap">
+                    {formatCurrency(transaction.amount)}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
       </div>
     </main>
   );

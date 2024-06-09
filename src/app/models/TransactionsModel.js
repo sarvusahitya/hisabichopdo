@@ -12,6 +12,7 @@ const TransactionModel =
           required: true,
         },
         date: { type: Date, default: null },
+        type: { type: String, default: "credit" },
       },
       {
         timestamps: true,

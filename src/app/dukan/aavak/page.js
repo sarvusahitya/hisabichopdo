@@ -5,9 +5,11 @@ import "react-datepicker/dist/react-datepicker.css";
 
 export default function DukanLandingPage() {
   const [inputValue, setInputValue] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleClick = async () => {
     console.log("Clicked! Input value:", inputValue);
+    setIsLoading(true); // Set isLoading to true when button is clicked
 
     try {
       // Extracting only the date part
@@ -32,6 +34,8 @@ export default function DukanLandingPage() {
 
       if (!response.ok) {
         const errorData = await response.json();
+        console.log(errorData.message);
+        alert(errorData.message);
         throw new Error(errorData.message || "Something went wrong");
       }
 
@@ -41,6 +45,8 @@ export default function DukanLandingPage() {
       setInputValue("");
     } catch (error) {
       console.error("Error:", error);
+    } finally {
+      setIsLoading(false); // Set loading to false when the API call is finished
     }
   };
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -74,11 +80,12 @@ export default function DukanLandingPage() {
           className="form-control text-black w-full mb-2 md:mb-0"
           placeholder="આવક અહીંયા લખો."
         />
+
         <button
           onClick={handleClick}
           className="px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 focus:outline-none w-full"
         >
-          Add
+          {isLoading ? "Loading..." : "Add"}
         </button>
       </div>
       <div className="grid grid-cols-3 gap-4 lg:max-w-5xl lg:w-full lg:mb-0 lg:text-left">

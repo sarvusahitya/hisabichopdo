@@ -176,16 +176,14 @@ export default function DukanJavakPage() {
         {fetchLoading ? (
           <div>Loading...</div>
         ) : (
-          <table className="min-w-full bg-white border border-gray-200">
+          <table className="min-w-full bg-white border  table-auto">
             <thead>
               <tr>
-                <th className="py-2 px-4 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                <th className="py-2 px-1 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                   Date
                 </th>
-                <th className="py-2 px-4 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                  વેચાણકાર નામ
-                </th>
-                <th className="py-2 px-4 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+
+                <th className="py-2 px-1 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                   Transaction
                 </th>
               </tr>
@@ -193,13 +191,12 @@ export default function DukanJavakPage() {
             <tbody>
               {transactions.map((transaction) => (
                 <tr key={transaction._id}>
-                  <td className="py-2 px-4 border-b border-gray-200 whitespace-nowrap">
+                  <td className="py-2 px-1 border-b border-gray-200 whitespace-nowrap">
                     {forMateDate(transaction.date)}
-                  </td>
-                  <td className="py-2 px-4 border-b border-gray-200 whitespace-nowrap">
                     {transaction.vendorname}
                   </td>
-                  <td className="py-2 px-4 border-b border-gray-200 whitespace-nowrap text-right">
+
+                  <td className="py-2 px-1 border-b border-gray-200 whitespace-nowrap text-right">
                     {formatCurrency(transaction.amount)}
                   </td>
                 </tr>

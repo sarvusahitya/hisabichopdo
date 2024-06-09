@@ -13,7 +13,7 @@ const TransactionModel =
         },
         date: { type: Date, default: null },
         type: { type: String, default: "credit" },
-        vendorid: { type: mongoose.Schema.Types.ObjectId, ref: "poet" },
+        vendorid: { type: mongoose.Schema.Types.ObjectId, ref: "vendor" },
         vendorname: { type: String, default: "" },
       },
       {

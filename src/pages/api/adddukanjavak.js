@@ -18,7 +18,6 @@ export default async function handler(req, res) {
     // Connect to the database
     await connectToDatabase();
 
-    console.log(vendorid);
     // Create a new instance of TransactionModel with date and amount
     const entry = new TransactionModel({
       date,

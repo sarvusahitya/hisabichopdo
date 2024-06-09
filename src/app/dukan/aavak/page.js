@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import moment from "moment";
 
 export default function DukanLandingPage() {
   const [inputValue, setInputValue] = useState("");
@@ -14,6 +15,9 @@ export default function DukanLandingPage() {
       style: "currency",
       currency: "INR",
     }).format(amount);
+  };
+  const forMateDate = (date) => {
+    return moment(date).format("DD-MMM-YY");
   };
 
   useEffect(() => {
@@ -141,7 +145,7 @@ export default function DukanLandingPage() {
               {transactions.map((transaction) => (
                 <tr key={transaction._id}>
                   <td className="py-2 px-4 border-b border-gray-200 whitespace-nowrap">
-                    {new Date(transaction.date).toLocaleDateString()}
+                    {forMateDate(transaction.date)}
                   </td>
                   <td className="py-2 px-4 border-b border-gray-200 whitespace-nowrap text-right">
                     {formatCurrency(transaction.amount)}

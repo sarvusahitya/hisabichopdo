@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 // Check if the model is already defined before defining it
-const TransactionModel =
+const HomeTransactions =
   mongoose.models.transaction ||
   mongoose.model(
     "transaction",
@@ -13,10 +13,8 @@ const TransactionModel =
         },
         date: { type: Date, default: null },
         type: { type: String, default: "credit" },
-        vendorid: { type: mongoose.Schema.Types.ObjectId, ref: "vendor" },
-        vendorname: { type: String, default: "" },
-        losstypeid: { type: String, default: "" },
-        losstypename: { type: String, default: "" },
+        expensetypeid: { type: mongoose.Schema.Types.ObjectId, ref: "vendor" },
+        expensetypename: { type: String, default: "" },
       },
       {
         timestamps: true,
@@ -24,4 +22,4 @@ const TransactionModel =
     )
   );
 
-export default TransactionModel;
+export default HomeTransactions;

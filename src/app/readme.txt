@@ -25,4 +25,28 @@ mongodb+srv://trushitgadhavi99133:wrv7hc53gCoNLyPK@cluster.8mydilr.mongodb.net/
 આવક 
 જાવક 
 
+
+
+avak -mius 
+javak
+
+
+5
+
+
+
+sort by desecending
+
+
+
+580000-1020 = profit (light bill)  cha  - dukan - lossss
+loss 
+
+avak-javak = profit - 
+
+
+6040+250 
  
+
+
+

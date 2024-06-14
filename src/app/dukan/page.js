@@ -46,7 +46,7 @@ export default function DukanLandingPage() {
       >
         {" "}
         <h2 className={`mb-3 text-2xl font-semibold`}>
-          દુકાનન જમા-ઉધાર{" "}
+          દુકાન જમા-ઉધાર{" "}
           <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
             -&gt;
           </span>

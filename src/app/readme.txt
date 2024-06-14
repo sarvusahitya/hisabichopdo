@@ -46,7 +46,28 @@ avak-javak = profit -
 
 
 6040+250 
- 
+
+
+pending
+dukan ni baki raheli rakam
+chutak
+soda
+kariyanu
+pan masala
+chemical
+pepci
+tirupati
+
+
+
+dukan na customer entry
+
+    
+
+
+
+
+
 
 
 

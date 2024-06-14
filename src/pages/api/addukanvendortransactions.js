@@ -1,6 +1,6 @@
 import connectToDatabase from "@/app/lib/db";
-import TransactionModel from "@/app/models/TransactionsModel"; // Update import
 
+import DukanVendorTransactions from "@/app/models/dukanvendortransaction";
 export default async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).json({ message: "Only POST requests allowed" });
@@ -16,8 +16,8 @@ export default async function handler(req, res) {
     // Connect to the database
     await connectToDatabase();
 
-    // Create a new instance of TransactionModel with date and amount
-    const entry = new TransactionModel({
+    // Create a new instance of DukanVendorTransactions with date and amount
+    const entry = new DukanVendorTransactions({
       date,
       amount,
       type,

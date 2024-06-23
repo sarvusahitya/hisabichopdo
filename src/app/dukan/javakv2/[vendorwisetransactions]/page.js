@@ -159,7 +159,7 @@ export default function DukanVendorWiseTransactions() {
 
   return (
     <main className="flex flex-col items-center justify-between p-24">
-      <h1 className="mb-3 text-2xl font-semibold text-white">
+      <h1 className="mb-3 text-2xl font-semibold text-white text-white">
         {selectedVendorname}
       </h1>
       <div className="flex flex-col lg:max-w-5xl lg:w-full lg:mb-3 lg:flex-row lg:justify-between">
@@ -206,15 +206,15 @@ export default function DukanVendorWiseTransactions() {
           <table className="min-w-full bg-white border  table-auto">
             <thead>
               <tr>
-                <th className="py-2 px-1 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                <th className="py-2 px-1 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-white text-gray-600 uppercase tracking-wider">
                   type
                 </th>
 
-                <th className="py-2 px-1 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                <th className="py-2 px-1 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-white text-gray-600 uppercase tracking-wider">
                   Date
                 </th>
 
-                <th className="py-2 px-1 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                <th className="py-2 px-1 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-white text-gray-600 uppercase tracking-wider">
                   Transaction
                 </th>
               </tr>
@@ -246,7 +246,7 @@ export default function DukanVendorWiseTransactions() {
         )}
 
         {AllTotalAnalysis.length > 0 ? (
-          <h3 className="mb-3 text-2xl font-semibold text-white text-right">
+          <h3 className="mb-3 text-2xl font-semibold text-white text-white text-right">
             {/* <p>રોકડે જાવક :{formatCurrency(AllTotalAnalysis[0].debit)}</p> */}
             <p>બાકી લીધેલું :{formatCurrency(AllTotalAnalysis[0].borrowSum)}</p>
             <p>ટોટલ જમા:{formatCurrency(AllTotalAnalysis[0].depositSum)}</p>

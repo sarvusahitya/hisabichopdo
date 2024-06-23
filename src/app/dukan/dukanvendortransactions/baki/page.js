@@ -134,7 +134,7 @@ export default function DukanVendorTransaction() {
 
   return (
     <main className="flex flex-col items-center justify-between p-5">
-      <h1 className="mb-3 text-2xl font-semibold text-white">
+      <h1 className="mb-3 text-2xl font-semibold text-white text-white">
         દુકાન ની બાકી યાદી ઉમેરો
       </h1>
       <div className="flex flex-col lg:max-w-5xl lg:w-full lg:mb-3 lg:flex-row lg:justify-between">
@@ -176,7 +176,7 @@ export default function DukanVendorTransaction() {
         </button>
       </div>
 
-      <h1 className="mb-3 text-2xl font-semibold text-white">
+      <h1 className="mb-3 text-2xl font-semibold text-white text-white">
         દુકાન ની બાકી યાદી
       </h1>
       <div className="text-black">
@@ -186,11 +186,11 @@ export default function DukanVendorTransaction() {
           <table className="min-w-full bg-white border  table-auto">
             <thead>
               <tr>
-                <th className="py-2 px-1 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                <th className="py-2 px-1 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-white text-gray-600 uppercase tracking-wider">
                   Date
                 </th>
 
-                <th className="py-2 px-1 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                <th className="py-2 px-1 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-white text-gray-600 uppercase tracking-wider">
                   Transaction
                 </th>
               </tr>

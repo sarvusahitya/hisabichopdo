@@ -15,6 +15,7 @@ export default function DukanVendorWiseTransactions() {
   const [isLoading, setIsLoading] = useState(false);
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [transactions, setTransactions] = useState([]);
+  const [AllTotalAnalysis, setTotalForAllValues] = useState([]);
   const [fetchLoading, setFetchLoading] = useState(true);
   const [selettransactiontypeid, setTransactionsType] = useState(""); // Add state for selected vendor ID
   const [selectvisibletransactionname, setTransactionsVisibleTypeName] =
@@ -53,6 +54,25 @@ export default function DukanVendorWiseTransactions() {
       setFetchLoading(false);
     }
   }
+  async function GroupByTotalAnalytics() {
+    try {
+      const response = await fetch("/api/dukantransactiongroupby", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          vendorid: slug,
+        }),
+      });
+      const data = await response.json();
+      setTotalForAllValues(data);
+    } catch (error) {
+      console.error("Error fetching transactions:", error);
+    } finally {
+      // setFetchLoading(false);
+    }
+  }
   async function getVendorDetails() {
     try {
       const response = await fetch("/api/listvendors");
@@ -74,6 +94,9 @@ export default function DukanVendorWiseTransactions() {
     setTimeout(() => {
       fetchTransactions();
     }, 1000);
+    setTimeout(() => {
+      GroupByTotalAnalytics();
+    }, 2000);
   }, []);
 
   const handleClick = async () => {
@@ -153,7 +176,7 @@ export default function DukanVendorWiseTransactions() {
           className="form-control text-black w-full mb-2 md:mb-0"
         >
           <option value="">Select One</option>
-          <option value="debit">રોકડા બાકી (જાવક)</option>
+          <option value="debit">રોકડે જાવક </option>
           <option value="borrow">ઉધાર</option>
           <option value="deposit">જમા</option>
         </select>
@@ -221,6 +244,16 @@ export default function DukanVendorWiseTransactions() {
             </tbody>
           </table>
         )}
+
+        {AllTotalAnalysis.map((item) => (
+          <h3 className="mb-3 text-2xl font-semibold text-white text-right">
+            <p>રોકડે જાવક :{formatCurrency(item.debit)}</p>
+            <p>બાકી લીધેલું :{formatCurrency(item.borrowSum)}</p>
+            <p>ટોટલ જમા:{formatCurrency(item.depositSum)}</p>
+            <p>દેવાના બાકી :{formatCurrency(item.currentBorrow)}</p>
+            <p>હાલની જાવક:{formatCurrency(item.currenttotal)}</p>
+          </h3>
+        ))}
       </div>
     </main>
   );

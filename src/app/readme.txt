@@ -78,8 +78,6 @@ employee id
 3925
 
 
-
-
-<option value="cashborrow">રોકડા બાકી</option>
-          <option value="borrow">બાકી</option>
-          <option value="deposit">જમા </option>
+ <option value="debit">રોકડા બાકી (જાવક)</option>
+          <option value="borrow">ઉધાર</option>
+          <option value="deposit">જમા</option>

@@ -30,13 +30,7 @@ export default function DukanJavakPage() {
 
   async function allJavakAnalysis() {
     try {
-      const response = await fetch("/api/alljavakanalysiscount", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(),
-      });
+      const response = await fetch("/api/alljavakanalysiscount");
       const data = await response.json();
       setTotalForAllValues(data);
     } catch (error) {
@@ -62,7 +56,9 @@ export default function DukanJavakPage() {
 
     fetchVendors(); // Fetch vendors when component mounts
 
-    allJavakAnalysis();
+    setTimeout(() => {
+      allJavakAnalysis();
+    }, 1000);
   }, []);
 
   return (

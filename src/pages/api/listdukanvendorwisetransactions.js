@@ -1,6 +1,7 @@
 import connectToDatabase from "@/app/lib/db";
 import TransactionModel from "@/app/models/TransactionsModel"; // Update import
 
+import mongoose from "mongoose";
 export default async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).json({ message: "Only POST requests allowed" });
@@ -16,13 +17,14 @@ export default async function handler(req, res) {
     const firstDay = new Date(now.getFullYear(), now.getMonth(), 1);
     const lastDay = new Date(now.getFullYear(), now.getMonth() + 1, 0);
 
+    console.log(vendorid);
     // Find transactions within the current month
     const transactions = await TransactionModel.find({
       date: {
         $gte: firstDay,
         $lt: lastDay,
       },
-      vendorid: vendorid,
+      vendorid: new mongoose.Types.ObjectId(vendorid),
     }).sort({ createdAt: -1 }); // Sort by date in descending order;
 
     // Respond with the transactions

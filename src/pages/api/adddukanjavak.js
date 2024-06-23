@@ -9,6 +9,7 @@ export default async function handler(req, res) {
   const { date, amount, type, vendorid, vendorname, typevisiblename } =
     req.body;
 
+  console.log(vendorid);
   if (!date || !amount) {
     return res.status(400).json({ message: "Date and amount are required" });
   }

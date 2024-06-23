@@ -85,6 +85,8 @@ export default function DukanJavakPage() {
         "0"
       )}-${parts[1].padStart(2, "0")}`;
 
+      console.log(selectedVendorId);
+      console.log(selectedVendorname);
       const response = await fetch("/api/adddukanjavak", {
         method: "POST",
         headers: {

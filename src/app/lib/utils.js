@@ -1,4 +1,3 @@
-import { useRouter, usePathname } from "next/navigation";
 import moment from "moment";
 
 module.exports.formatCurrency = (amount) => {
@@ -11,8 +10,7 @@ module.exports.forMateDate = (date) => {
   return moment(date).format("DD-MMM-YY");
 };
 module.exports.getLastSlug = (url) => {
-  const pathname = usePathname();
-  const parts = pathname.split("/");
+  const parts = url.split("/");
   const lastSlug = parts[parts.length - 1];
   return lastSlug;
 };

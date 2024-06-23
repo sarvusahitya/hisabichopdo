@@ -30,7 +30,7 @@ export default function DukanJavakPage() {
     setTransactionsType(selettransactiontypeid1);
     setTransactionsVisibleTypeName(selectvisiblenameset);
   };
-  var slug = getLastSlug();
+  var slug = getLastSlug(window.location.href);
   async function fetchTransactions() {
     try {
       const response = await fetch("/api/listdukanvendorwisetransactions", {

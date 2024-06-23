@@ -247,13 +247,13 @@ export default function DukanVendorWiseTransactions() {
 
         {AllTotalAnalysis.length > 0 ? (
           <h3 className="mb-3 text-2xl font-semibold text-white text-right">
-            <p>રોકડે જાવક :{formatCurrency(AllTotalAnalysis[0].debit)}</p>
+            {/* <p>રોકડે જાવક :{formatCurrency(AllTotalAnalysis[0].debit)}</p> */}
             <p>બાકી લીધેલું :{formatCurrency(AllTotalAnalysis[0].borrowSum)}</p>
             <p>ટોટલ જમા:{formatCurrency(AllTotalAnalysis[0].depositSum)}</p>
             <p>
               દેવાના બાકી :{formatCurrency(AllTotalAnalysis[0].currentBorrow)}
             </p>
-            <p>હાલની જાવક:{formatCurrency(AllTotalAnalysis[0].currenttotal)}</p>
+            {/* <p>હાલની જાવક:{formatCurrency(AllTotalAnalysis[0].currenttotal)}</p> */}
           </h3>
         ) : (
           <p className="text-gray-400">Loading...</p>

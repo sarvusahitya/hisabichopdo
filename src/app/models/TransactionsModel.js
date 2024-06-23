@@ -12,11 +12,13 @@ const TransactionModel =
           required: true,
         },
         date: { type: Date, default: null },
-        type: { type: String, default: "credit" },
+        type: { type: String, default: "credit" }, // credit,debit, baki ,cash
+        typevisiblename: { type: String, default: "" }, // credit,debit, baki ,cash
         vendorid: { type: mongoose.Schema.Types.ObjectId, ref: "vendor" },
         vendorname: { type: String, default: "" },
         losstypeid: { type: String, default: "" },
         losstypename: { type: String, default: "" },
+        notes: { type: String, default: "" },
       },
       {
         timestamps: true,

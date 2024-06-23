@@ -6,7 +6,8 @@ export default async function handler(req, res) {
     return res.status(405).json({ message: "Only POST requests allowed" });
   }
 
-  const { date, amount, type, vendorid, vendorname } = req.body;
+  const { date, amount, type, vendorid, vendorname, typevisiblename } =
+    req.body;
 
   if (!date || !amount) {
     return res.status(400).json({ message: "Date and amount are required" });
@@ -21,6 +22,7 @@ export default async function handler(req, res) {
       date,
       amount,
       type,
+      typevisiblename,
       vendorid,
       vendorname,
     });

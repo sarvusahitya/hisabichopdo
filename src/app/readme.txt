@@ -71,3 +71,15 @@ dukan na customer entry
 
 
 
+
+
+
+employee id
+3925
+
+
+
+
+<option value="cashborrow">રોકડા બાકી</option>
+          <option value="borrow">બાકી</option>
+          <option value="deposit">જમા </option>

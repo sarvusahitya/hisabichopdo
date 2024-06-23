@@ -2,6 +2,7 @@ import connectToDatabase from "@/app/lib/db";
 import TransactionModel from "@/app/models/TransactionsModel"; // Update import
 
 import mongoose, { mongo } from "mongoose";
+import { Underdog } from "next/font/google";
 export default async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).json({ message: "Only POST requests allowed" });
@@ -16,73 +17,83 @@ export default async function handler(req, res) {
     const now = new Date();
     const firstDay = new Date(now.getFullYear(), now.getMonth(), 1);
     const lastDay = new Date(now.getFullYear(), now.getMonth() + 1, 0);
+    var query = [];
 
-    var query = [
-      {
-        $match: {
-          type: {
-            $in: ["borrow", "deposit", "debit"],
-          },
+    var q = {
+      $match: {
+        type: {
+          $in: ["borrow", "deposit", "debit"],
         },
       },
-      {
+    };
+    query.push(q);
+
+    if (vendorid != undefined && vendorid != null) {
+      var q1 = {
         $match: {
           vendorid: new mongoose.Types.ObjectId(vendorid),
         },
-      },
-      {
-        $group: {
-          _id: "$vendorid",
-          borrowSum: {
-            $sum: {
-              $cond: {
-                if: {
-                  $eq: ["$type", "borrow"],
-                },
-                then: "$amount",
-                else: 0,
+      };
+      query.push(q1);
+    }
+
+    var q2 = {
+      $group: {
+        _id: "$vendorid",
+        borrowSum: {
+          $sum: {
+            $cond: {
+              if: {
+                $eq: ["$type", "borrow"],
               },
+              then: "$amount",
+              else: 0,
             },
           },
-          depositSum: {
-            $sum: {
-              $cond: {
-                if: {
-                  $eq: ["$type", "deposit"],
-                },
-                then: "$amount",
-                else: 0,
+        },
+        depositSum: {
+          $sum: {
+            $cond: {
+              if: {
+                $eq: ["$type", "deposit"],
               },
+              then: "$amount",
+              else: 0,
             },
           },
-          debit: {
-            $sum: {
-              $cond: {
-                if: {
-                  $eq: ["$type", "debit"],
-                },
-                then: "$amount",
-                else: 0,
+        },
+        debit: {
+          $sum: {
+            $cond: {
+              if: {
+                $eq: ["$type", "debit"],
               },
+              then: "$amount",
+              else: 0,
             },
           },
         },
       },
-      {
-        $addFields: {
-          currentBorrow: {
-            $subtract: ["$borrowSum", "$depositSum"],
-          },
+    };
+    query.push(q2);
+    var q3 = {
+      $addFields: {
+        currentBorrow: {
+          $subtract: ["$borrowSum", "$depositSum"],
         },
       },
-      {
-        $addFields: {
-          currenttotal: {
-            $add: ["$debit", "$currentBorrow"],
-          },
+    };
+    query.push(q3);
+    var q4 = {
+      $addFields: {
+        currenttotal: {
+          $add: ["$debit", "$depositSum"],
         },
       },
-    ];
+    };
+    query.push(q4);
+
+    console.log(JSON.stringify(query));
     const transactions = await TransactionModel.aggregate(query); // Sort by date in descending order;
 
     // Find transactions within the current month

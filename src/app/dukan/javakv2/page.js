@@ -6,6 +6,8 @@ import moment from "moment";
 import Link from "next/link";
 
 export default function DukanJavakPage() {
+  const [AllTotalAnalysis, setTotalForAllValues] = useState([]);
+
   const [inputValue, setInputValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -26,6 +28,23 @@ export default function DukanJavakPage() {
   const [vendors, setVendors] = useState([]);
   const [selectedVendor, setSelectedVendor] = useState(""); // Add state for selected vendor
 
+  async function allJavakAnalysis() {
+    try {
+      const response = await fetch("/api/alljavakanalysiscount", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(),
+      });
+      const data = await response.json();
+      setTotalForAllValues(data);
+    } catch (error) {
+      console.error("Error fetching transactions:", error);
+    } finally {
+      // setFetchLoading(false);
+    }
+  }
   useEffect(() => {
     async function fetchVendors() {
       try {
@@ -42,11 +61,26 @@ export default function DukanJavakPage() {
     }
 
     fetchVendors(); // Fetch vendors when component mounts
+
+    allJavakAnalysis();
   }, []);
 
   return (
     <main className="flex flex-col items-center justify-between p-6">
       <div className="min-h-screen flex flex-col items-center justify-center py-12">
+        {AllTotalAnalysis.length > 0 ? (
+          <h3 className="mb-3 text-2xl font-semibold text-white text-right">
+            <p>રોકડે જાવક :{formatCurrency(AllTotalAnalysis[0].debit)}</p>
+            <p>બાકી લીધેલું :{formatCurrency(AllTotalAnalysis[0].borrowSum)}</p>
+            <p>ટોટલ જમા:{formatCurrency(AllTotalAnalysis[0].depositSum)}</p>
+            <p>
+              દેવાના બાકી :{formatCurrency(AllTotalAnalysis[0].currentBorrow)}
+            </p>
+            <p>હાલની જાવક:{formatCurrency(AllTotalAnalysis[0].currenttotal)}</p>
+          </h3>
+        ) : (
+          <p className="text-gray-400">Loading...</p>
+        )}
         {fetchLoading ? (
           <div>Loading...</div>
         ) : (

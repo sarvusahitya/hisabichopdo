@@ -10,7 +10,7 @@ import {
   getFilterObject,
 } from "@/app/lib/utils";
 
-export default function DukanJavakPage() {
+export default function DukanVendorWiseTransactions() {
   const [inputValue, setInputValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -26,7 +26,6 @@ export default function DukanJavakPage() {
   const pathname = usePathname();
   const parts = pathname.split("/");
   const slug = parts[parts.length - 1];
-  console.log(slug);
 
   const handleTransactionTypeChange = (e) => {
     // console.log("Sdds");

@@ -1,6 +1,6 @@
 "use client";
-import React, { useState, useEffect } from "react";
-
+import { useEffect, useState } from "react";
+import { useRouter, usePathname } from "next/navigation";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import {
@@ -23,6 +23,11 @@ export default function DukanJavakPage() {
   const [selectedVendorId, setSelectedVendorId] = useState(""); // Add state for selected vendor ID
   const [selectedVendorname, setSelectedVendorName] = useState(""); // Add state for selected vendor
 
+  const pathname = usePathname();
+  const parts = pathname.split("/");
+  const slug = parts[parts.length - 1];
+  console.log(slug);
+
   const handleTransactionTypeChange = (e) => {
     // console.log("Sdds");
     const selettransactiontypeid1 = e.target.value; // Assuming vendor ID is included in the option value
@@ -30,7 +35,6 @@ export default function DukanJavakPage() {
     setTransactionsType(selettransactiontypeid1);
     setTransactionsVisibleTypeName(selectvisiblenameset);
   };
-  var slug = getLastSlug(window.location.href);
   async function fetchTransactions() {
     try {
       const response = await fetch("/api/listdukanvendorwisetransactions", {

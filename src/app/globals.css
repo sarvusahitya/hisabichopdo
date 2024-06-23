@@ -3,27 +3,18 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  background-color: #225656;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
   }
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background-color: #225656;
+
 }
 
 @layer utilities {
@@ -32,25 +23,3 @@ body {
   }
 }
 
-input[type=text],
-input[type=number],
-input[type=date],
-input[type=time],
-input[type=datetime-local],
-input[type=email],
-input[type=password],
-input[type=search],
-input[type=tel],
-input[type=url],
-input[type=week],
-textarea,
-select {
-  color: black;
-}
-
-
-
-
-.bg-customBackground{
- background-color: #f8ecec; 
-}

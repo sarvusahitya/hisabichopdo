@@ -72,7 +72,7 @@ export default function DukanJavakPage() {
           <h3 className="mb-3 text-2xl font-semibold text-white text-right">
             <p>રોકડે જાવક :{formatCurrency(AllTotalAnalysis[0].debit)}</p>
             <p>બાકી લીધેલું :{formatCurrency(AllTotalAnalysis[0].borrowSum)}</p>
-            <p>ટોટલ જમા:{formatCurrency(AllTotalAnalysis[0].depositSum)}</p>
+            {/* <p>ટોટલ જમા:{formatCurrency(AllTotalAnalysis[0].depositSum)}</p> */}
             <p>
               દેવાના બાકી :{formatCurrency(AllTotalAnalysis[0].currentBorrow)}
             </p>

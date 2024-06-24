@@ -246,15 +246,42 @@ export default function DukanVendorWiseTransactions() {
         )}
 
         {AllTotalAnalysis.length > 0 ? (
-          <h3 className="mb-3 text-2xl font-semibold text-white text-right">
-            {/* <p>રોકડે જાવક :{formatCurrency(AllTotalAnalysis[0].debit)}</p> */}
-            <p>બાકી લીધેલું :{formatCurrency(AllTotalAnalysis[0].borrowSum)}</p>
-            <p>ટોટલ જમા:{formatCurrency(AllTotalAnalysis[0].depositSum)}</p>
-            <p>
-              દેવાના બાકી :{formatCurrency(AllTotalAnalysis[0].currentBorrow)}
-            </p>
-            {/* <p>હાલની જાવક:{formatCurrency(AllTotalAnalysis[0].currenttotal)}</p> */}
-          </h3>
+          <table className="text-white border border-gray-200 m-10 ">
+            <tr className="border">
+              <th className="border p-4">રોકડે જાવક </th>
+              <th className="border p-4">
+                {formatCurrency(AllTotalAnalysis[0].debit)}{" "}
+              </th>
+            </tr>
+            <tr className="border">
+              <th className="border p-4">બાકી લીધેલું </th>
+
+              <th className="border p-4">
+                {formatCurrency(AllTotalAnalysis[0].borrowSum)}{" "}
+              </th>
+            </tr>
+            <tr className="border">
+              <th className="border p-4">જમા કરાવેલા </th>
+
+              <th className="border p-4">
+                {formatCurrency(AllTotalAnalysis[0].depositSum)}{" "}
+              </th>
+            </tr>
+            <tr className="border">
+              <th className="border p-4">દેવાના બાકી </th>
+
+              <th className="border p-4">
+                {formatCurrency(AllTotalAnalysis[0].currentBorrow)}{" "}
+              </th>
+            </tr>
+            <tr className="border">
+              <th className="border p-4">હાલની જાવક</th>
+
+              <th className="border p-4">
+                {formatCurrency(AllTotalAnalysis[0].currenttotal)}
+              </th>
+            </tr>
+          </table>
         ) : (
           <p className="text-gray-400">Loading...</p>
         )}

@@ -77,7 +77,7 @@ export default async function handler(req, res) {
     var q4 = {
       $addFields: {
         currenttotal: {
-          $add: ["$borrowSum", "$depositSum"],
+          $add: ["$depositSum", "$debit"],
         },
       },
     };

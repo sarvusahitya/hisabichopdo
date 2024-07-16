@@ -66,12 +66,15 @@ export default function DukanJavakPage() {
       <div className="min-h-screen flex flex-col items-center justify-center py-12">
         {AllTotalAnalysis.length > 0 ? (
           <table className="text-white border border-gray-200 m-10 ">
-            <tr className="border">
+            {/* <tr className="border">
               <th className="border p-4">રોકડે જાવક </th>
               <th className="border p-4">
                 {formatCurrency(AllTotalAnalysis[0].debit)}{" "}
               </th>
             </tr>
+
+
+
             <tr className="border">
               <th className="border p-4">બાકી લીધેલું </th>
 
@@ -79,6 +82,7 @@ export default function DukanJavakPage() {
                 {formatCurrency(AllTotalAnalysis[0].borrowSum)}{" "}
               </th>
             </tr>
+
             <tr className="border">
               <th className="border p-4">જમા કરાવેલા </th>
 
@@ -86,6 +90,15 @@ export default function DukanJavakPage() {
                 {formatCurrency(AllTotalAnalysis[0].depositSum)}{" "}
               </th>
             </tr>
+              */}
+
+            <tr className="border">
+              <th className="border p-4">રોકડે જાવક </th>
+              <th className="border p-4">
+                {formatCurrency(AllTotalAnalysis[0].debit)}{" "}
+              </th>
+            </tr>
+
             <tr className="border">
               <th className="border p-4">દેવાના બાકી </th>
 
@@ -93,13 +106,13 @@ export default function DukanJavakPage() {
                 {formatCurrency(AllTotalAnalysis[0].currentBorrow)}{" "}
               </th>
             </tr>
-            <tr className="border">
+            {/* <tr className="border">
               <th className="border p-4">હાલની જાવક</th>
 
               <th className="border p-4">
                 {formatCurrency(AllTotalAnalysis[0].currenttotal)}
               </th>
-            </tr>
+            </tr> */}
           </table>
         ) : (
           <p className="text-gray-400">Loading...</p>

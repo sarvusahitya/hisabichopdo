@@ -1,4 +1,5 @@
 import moment from "moment";
+import connectToDatabase from "./db";
 
 module.exports.formatCurrency = (amount) => {
   return new Intl.NumberFormat("en-IN", {
@@ -23,4 +24,15 @@ module.exports.getFilterObject = (data, id) => {
     };
   }
   return []; // Return null if item with matching ID not found
+};
+
+module.exports.addCommonDataSave = async (formdata, ModelName) => {
+  // Connect to the database
+  await connectToDatabase();
+
+  // Create a new instance of TransactionModel with date and amount
+  const entry = new ModelName(formdata);
+
+  // Save the entry to the database
+  await entry.save();
 };

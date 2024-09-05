@@ -132,6 +132,7 @@ export default function DukanJavakPage() {
           <option value="1">માલસામાન ની નુકશાની(Loss of goods)</option>
           <option value="2">ઘરવપરાશ માટે દુકાનમાંથી(Home Expense)</option>
           <option value="3">સગાવહાલા માટે (Relatives)</option>
+          <option value="4">અન્ય (Other)</option>
         </select>
         <input
           type="text"

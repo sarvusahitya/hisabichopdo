@@ -23,6 +23,8 @@ export default function DukanJavakPage() {
     return moment(date).format("DD-MMM-YY");
   };
 
+  console.log("1");
+
   const [selectedVendorId, setSelectedVendorId] = useState(""); // Add state for selected vendor ID
 
   const [vendors, setVendors] = useState([]);
@@ -39,6 +41,8 @@ export default function DukanJavakPage() {
       // setFetchLoading(false);
     }
   }
+  console.log("2");
+
   useEffect(() => {
     async function fetchVendors() {
       try {
@@ -53,12 +57,14 @@ export default function DukanJavakPage() {
         console.error("Error fetching vendors:", error);
       }
     }
-
+    console.log("3");
     fetchVendors(); // Fetch vendors when component mounts
+    console.log("4");
 
     setTimeout(() => {
       allJavakAnalysis();
     }, 1000);
+    console.log("5");
   }, []);
 
   return (

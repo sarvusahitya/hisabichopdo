@@ -15,6 +15,7 @@ export default async function handler(req, res) {
     const firstDay = new Date(now.getFullYear(), now.getMonth(), 1);
     const lastDay = new Date(now.getFullYear(), now.getMonth() + 2, 0);
 
+    console.log(lastDay);
     // Find transactions within the current month
     const transactions = await TransactionModel.find({
       date: {

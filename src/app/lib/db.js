@@ -12,8 +12,6 @@ if (!MONGODB_URI) {
   );
 }
 
-console.log(MONGODB_URI);
-
 /**
  * Global is used here to maintain a cached connection across hot reloads
  * in development. This prevents connections growing exponentially

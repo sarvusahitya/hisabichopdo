@@ -93,7 +93,6 @@ export default async function handler(req, res) {
     };
     query.push(q4);
 
-    console.log(JSON.stringify(query));
     const transactions = await TransactionModel.aggregate(query); // Sort by date in descending order;
 
     // Find transactions within the current month

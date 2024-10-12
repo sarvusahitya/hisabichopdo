@@ -86,7 +86,6 @@ export default function DukanLandingPage() {
   };
 
   const handleDateChange = (date) => {
-    console.log(date);
     setSelectedDate(date);
   };
   const totalAmount = transactions.reduce((total, transaction) => {

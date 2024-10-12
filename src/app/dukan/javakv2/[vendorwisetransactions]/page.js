@@ -204,22 +204,20 @@ export default function DukanVendorWiseTransactions() {
           <div>Loading...</div>
         ) : (
           <table className="min-w-full bg-white border  table-auto">
-            <thead>
-              <tr>
-                <th className="py-2 px-1 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                  type
-                </th>
-
-                <th className="py-2 px-1 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                  Date
-                </th>
-
-                <th className="py-2 px-1 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                  Transaction
-                </th>
-              </tr>
-            </thead>
             <tbody>
+              <tr>
+                <td className="py-2 px-1 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                  type
+                </td>
+
+                <td className="py-2 px-1 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                  Date
+                </td>
+
+                <td className="py-2 px-1 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                  Transaction
+                </td>
+              </tr>
               {transactions.map((transaction) => (
                 <tr key={transaction._id}>
                   <td className="py-2 px-1 border-b border-gray-200 whitespace-nowrap">
@@ -235,52 +233,65 @@ export default function DukanVendorWiseTransactions() {
                 </tr>
               ))}
 
-              <td
-                className="py-2 px-4 border-b border-gray-200 whitespace-nowrap text-right"
-                colSpan={3}
-              >
-                {formatCurrency(totalAmount)}
-              </td>
+              <tr>
+                <td
+                  className="py-2 px-4 border-b border-gray-200 whitespace-nowrap text-right"
+                  colSpan={3}
+                >
+                  {formatCurrency(totalAmount)}
+                </td>
+              </tr>
             </tbody>
           </table>
         )}
 
         {AllTotalAnalysis.length > 0 ? (
           <table className="text-white border border-gray-200 m-10 ">
-            <tr className="border">
-              <th className="border p-4">રોકડે જાવક </th>
-              <th className="border p-4">
-                {formatCurrency(AllTotalAnalysis[0].debit)}{" "}
-              </th>
-            </tr>
-            <tr className="border">
+            <tbody>
+              <tr className="border">
+                <th className="border p-4">રોકડે જાવક </th>
+                <th className="border p-4">
+                  {formatCurrency(AllTotalAnalysis[0].debit)}{" "}
+                </th>
+              </tr>
+              {/* <tr className="border">
               <th className="border p-4">બાકી લીધેલું </th>
 
               <th className="border p-4">
                 {formatCurrency(AllTotalAnalysis[0].borrowSum)}{" "}
               </th>
-            </tr>
-            <tr className="border">
+            </tr> */}
+              {/* <tr className="border">
               <th className="border p-4">જમા કરાવેલા </th>
 
               <th className="border p-4">
                 {formatCurrency(AllTotalAnalysis[0].depositSum)}{" "}
               </th>
-            </tr>
-            <tr className="border">
-              <th className="border p-4">દેવાના બાકી </th>
+            </tr> */}
 
-              <th className="border p-4">
-                {formatCurrency(AllTotalAnalysis[0].currentBorrow)}{" "}
-              </th>
-            </tr>
-            <tr className="border">
-              <th className="border p-4">હાલની જાવક</th>
+              <tr className="border">
+                <th className="border p-4">જમા કરાવેલા </th>
 
-              <th className="border p-4">
-                {formatCurrency(AllTotalAnalysis[0].currenttotal)}
-              </th>
-            </tr>
+                <th className="border p-4">
+                  {formatCurrency(AllTotalAnalysis[0].depositSum)}{" "}
+                </th>
+              </tr>
+              <tr className="border">
+                <th className="border p-4">ટોટલ જાવક</th>
+
+                <th className="border p-4">
+                  {formatCurrency(AllTotalAnalysis[0].currenttotal)}
+                </th>
+              </tr>
+
+              <tr className="border">
+                <th className="border p-4"> ટોટલ દેવાના બાકી </th>
+
+                <th className="border p-4">
+                  {formatCurrency(AllTotalAnalysis[0].currentBorrow)}{" "}
+                </th>
+              </tr>
+            </tbody>
           </table>
         ) : (
           <p className="text-gray-400">Loading...</p>

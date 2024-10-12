@@ -95,6 +95,7 @@ export default async function handler(req, res) {
 
     const transactions = await TransactionModel.aggregate(query); // Sort by date in descending order;
 
+    console.log("s");
     // Find transactions within the current month
 
     // Respond with the transactions

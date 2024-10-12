@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const MONGODB_URI =
-  "mongodb+srv://trushitgadhavi99133:wrv7hc53gCoNLyPK@cluster.8mydilr.mongodb.net/hisabichopdo?retryWrites=true&w=majority&appName=cluster";
+  "mongodb+srv://trushitgadhavi99133:wrv7hc53gCoNLyPK@cluster.8mydilr.mongodb.net/hisabichopdo?retryWrites=true&w=majority";
 
 if (!MONGODB_URI) {
   console.log(

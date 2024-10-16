@@ -97,30 +97,39 @@ export default function DukanJavakPage() {
               */}
 
               <tr className="border">
-                <th className="border p-4">રોકડે જાવક </th>
-                <th className="border p-4">
+                <th className="border p-4" key="table1">
+                  રોકડે જાવક{" "}
+                </th>
+                <th className="border p-4" key="table2">
                   {formatCurrency(AllTotalAnalysis[0].debit)}{" "}
                 </th>
               </tr>
               <tr className="border">
-                <th className="border p-4">જમા કરાવેલા </th>
+                <th className="border p-4" key="table3">
+                  જમા કરાવેલા{" "}
+                </th>
 
-                <th className="border p-4">
+                <th className="border p-4" key="table4">
                   {formatCurrency(AllTotalAnalysis[0].depositSum)}{" "}
                 </th>
               </tr>
               <tr className="border">
-                <th className="border p-4">ટોટલ જાવક</th>
+                <th className="border p-4" key="table5">
+                  ટોટલ જાવક
+                </th>
 
-                <th className="border p-4">
+                <th className="border p-4" key="table6">
                   {formatCurrency(AllTotalAnalysis[0].currenttotal)}
                 </th>
               </tr>
 
               <tr className="border">
-                <th className="border p-4"> ટોટલ દેવાના બાકી </th>
+                <th className="border p-4" key="table7">
+                  {" "}
+                  ટોટલ દેવાના બાકી{" "}
+                </th>
 
-                <th className="border p-4">
+                <th className="border p-4" key="table8">
                   {formatCurrency(AllTotalAnalysis[0].currentBorrow)}{" "}
                 </th>
               </tr>

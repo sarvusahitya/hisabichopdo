@@ -65,11 +65,8 @@ export default function DukanJavakPage() {
     <main className="flex flex-col items-center justify-between p-6">
       <div className="min-h-screen flex flex-col items-center justify-center py-12">
         {AllTotalAnalysis.length > 0 ? (
-          <table
-            className="text-white border border-gray-200 m-10 "
-            key="table"
-          >
-            <tbody key="tabletbody">
+          <table className="text-white border border-gray-200 m-10 ">
+            <tbody>
               {/* <tr className="border">
               <th className="border p-4">રોકડે જાવક </th>
               <th className="border p-4">
@@ -97,39 +94,30 @@ export default function DukanJavakPage() {
               */}
 
               <tr className="border">
-                <th className="border p-4" key="table1">
-                  રોકડે જાવક{" "}
-                </th>
-                <th className="border p-4" key="table2">
+                <th className="border p-4">રોકડે જાવક </th>
+                <th className="border p-4">
                   {formatCurrency(AllTotalAnalysis[0].debit)}{" "}
                 </th>
               </tr>
               <tr className="border">
-                <th className="border p-4" key="table3">
-                  જમા કરાવેલા{" "}
-                </th>
+                <th className="border p-4">જમા કરાવેલા </th>
 
-                <th className="border p-4" key="table4">
+                <th className="border p-4">
                   {formatCurrency(AllTotalAnalysis[0].depositSum)}{" "}
                 </th>
               </tr>
               <tr className="border">
-                <th className="border p-4" key="table5">
-                  ટોટલ જાવક
-                </th>
+                <th className="border p-4">ટોટલ જાવક</th>
 
-                <th className="border p-4" key="table6">
+                <th className="border p-4">
                   {formatCurrency(AllTotalAnalysis[0].currenttotal)}
                 </th>
               </tr>
 
               <tr className="border">
-                <th className="border p-4" key="table7">
-                  {" "}
-                  ટોટલ દેવાના બાકી{" "}
-                </th>
+                <th className="border p-4"> ટોટલ દેવાના બાકી </th>
 
-                <th className="border p-4" key="table8">
+                <th className="border p-4">
                   {formatCurrency(AllTotalAnalysis[0].currentBorrow)}{" "}
                 </th>
               </tr>
@@ -141,28 +129,16 @@ export default function DukanJavakPage() {
         {fetchLoading ? (
           <div>Loading...</div>
         ) : (
-          <div
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full max-w-6xl px-4"
-            key="firstdiv"
-          >
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full max-w-6xl px-4">
             {vendors.map((vendor) => (
               <div
-                key={vendor.id}
+                key={vendor._id}
                 className="flex flex-col items-center justify-center p-4 bg-gray-800 rounded-lg shadow-md hover:bg-gray-700 transition-colors duration-300"
               >
-                <div
-                  className="text-4xl text-white mb-4 break-words text-center"
-                  key={`div${vendor.id}`}
-                >
-                  <Link
-                    href={`/dukan/javakv2/${vendor._id}`}
-                    key={`link${vendor.id}`}
-                  >
+                <div className="text-4xl text-white mb-4 break-words text-center">
+                  <Link href={`/dukan/javakv2/${vendor._id}`}>
                     {vendor.vendorgujaratiname}
-                    <h3
-                      className="text-xl text-white break-words text-center"
-                      key={`h3${vendor.id}`}
-                    >
+                    <h3 className="text-xl text-white break-words text-center">
                       ({vendor.vendorname})
                     </h3>
                   </Link>
